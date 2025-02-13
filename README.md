@@ -17,9 +17,15 @@
 
 run `npm run generate`
 
+## Actual
+
+```ts
+        "Create repository request.": Record<string, never>;
+```
+
 ## Expected
 
-A discriminated union of the two types:
+A discriminated union of the two types, something like:
 ```ts
         "Create repository request.": {
             type: "azure" | "git";
@@ -28,10 +34,4 @@ A discriminated union of the two types:
         } & components["schemas"]["CreateAzureRepositoryRequest"]) | ({
             type: "git";
         } & components["schemas"]["CreateGitRepositoryRequest"]);
-```
-
-## Actual
-
-```ts
-        "Create repository request.": Record<string, never>;
 ```
