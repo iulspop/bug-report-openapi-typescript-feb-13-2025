@@ -1,0 +1,75 @@
+---
+openapi: 3.0.3
+info:
+  title: Bug Report
+  version: 2025-02-13
+paths:
+  /api/v1/repositories:
+    post:
+      tags:
+        - Platform
+      summary: Create Repository
+      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Create repository request.'
+      responses:
+        '201':
+          description: Repository created successfully.
+components:
+  schemas:
+    Create repository request.:
+      description: Lorem ipsum dolor sit amet.
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          azure: '#/components/schemas/CreateAzureRepositoryRequest'
+          git: '#/components/schemas/CreateGitRepositoryRequest'
+    CreateAzureRepositoryRequest:
+      required:
+        - organization
+        - project
+        - name
+      type: object
+      properties:
+        organization:
+          description: Lorem ipsum dolor sit amet.
+          type: string
+        project:
+          description: Lorem ipsum dolor sit amet.
+          type: string
+        name:
+          description: Lorem ipsum dolor sit amet.
+          type: string
+    CreateGitRepositoryRequest:
+      required:
+        - name
+        - credentials
+        - url
+      type: object
+      properties:
+        name:
+          description: Lorem ipsum dolor sit amet.
+          type: string
+        credentials:
+          description: Lorem ipsum dolor sit amet.
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/Credentials'
+        url:
+          description: Lorem ipsum dolor sit amet.
+          pattern: ^https?://.*$
+          type: string
+    Credentials:
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string

@@ -1,0 +1,19 @@
+{
+  "name": "bug-report-openapi-typescript-feb-13-2025",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "generate": "openapi-typescript example.yaml -o example.d.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "dependencies": {
+    "-": "^0.0.1"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.6.1"
+  }
+}
