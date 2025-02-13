@@ -3,7 +3,7 @@
 ## Given
 
 ```yaml
-    Create repository request.:
+    CreateRepositoryRequest:
       description: Lorem ipsum dolor sit amet.
       type: object
       discriminator:
@@ -20,14 +20,14 @@ run `npm run generate`
 ## Actual
 
 ```ts
-        "Create repository request.": Record<string, never>;
+        CreateRepositoryRequest: Record<string, never>;
 ```
 
 ## Expected
 
 A discriminated union of the two types, something like:
 ```ts
-        "Create repository request.": {
+        "CreateRepositoryRequest": {
             type: "azure" | "git";
         } & ({
             type: "azure";

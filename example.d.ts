@@ -17,28 +17,7 @@ export interface paths {
          * Create Repository
          * @description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
          */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Create repository request."];
-                };
-            };
-            responses: {
-                /** @description Repository created successfully. */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
+        post: operations["createRepository"];
         delete?: never;
         options?: never;
         head?: never;
@@ -50,7 +29,7 @@ export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
         /** @description Lorem ipsum dolor sit amet. */
-        "Create repository request.": Record<string, never>;
+        CreateRepositoryRequest: Record<string, never>;
         CreateAzureRepositoryRequest: {
             /** @description Lorem ipsum dolor sit amet. */
             organization: string;
@@ -79,4 +58,34 @@ export interface components {
     pathItems: never;
 }
 export type $defs = Record<string, never>;
-export type operations = Record<string, never>;
+export interface operations {
+    createRepository: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["CreateRepositoryRequest"];
+            };
+        };
+        responses: {
+            /** @description Repository created successfully. */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+}
