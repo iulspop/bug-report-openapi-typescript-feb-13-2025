@@ -3,9 +3,18 @@ openapi: 3.0.3
 info:
   title: Bug Report
   version: 2025-02-13
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://google.com
+    description: Production server
 paths:
   /api/v1/repositories:
     post:
+      operationId: createRepository
+      security:
+        - bearerAuth: []
       tags:
         - Platform
       summary: Create Repository
@@ -14,13 +23,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Create repository request.'
+              $ref: '#/components/schemas/CreateRepositoryRequest'
       responses:
         '201':
           description: Repository created successfully.
+        '400':
+          description: Bad Request
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
-    Create repository request.:
+    CreateRepositoryRequest:
       description: Lorem ipsum dolor sit amet.
       type: object
       discriminator:
